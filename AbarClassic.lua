@@ -7,7 +7,6 @@ off_speed = 0.000
 eons = 0.000
 eoffs= 0.000
 testvar = 0
-player_class = UnitClass("player")
 
 shoot_start = 0
 shoot_end = 0
@@ -209,7 +208,7 @@ function Abar_Update(self)
 		tText:SetText("{"..left.."}")
 		tText:Show()
 	else
-	        tText:Hide()
+		tText:Hide()
 	end
 	self:SetValue(ttime)
 	tSpark:SetPoint("CENTER", self, "LEFT", (ttime-self.st)/(self.et-self.st)*195, 2);
