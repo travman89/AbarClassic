@@ -7,6 +7,7 @@ off_speed = 0.000
 eons = 0.000
 eoffs= 0.000
 testvar = 0
+player_class = UnitClass("player")
 
 shoot_start = 0
 shoot_end = 0
@@ -46,6 +47,9 @@ function Abar_chat(msg)
 	elseif msg=="mob" then
 		abar.mob = not(abar.mob)
 		print('mobs are'.. Abar_Boo(abar.mob));
+	elseif msg=="hideoh" then
+		abar.hideoh = not(abar.hideoh)
+		print('Offhand swing timer disabled is'.. Abar_Boo(abar.hideoh))
 	else
 		print('use any of these to control Abar:');
 		print('Lock- to lock and hide the anchor');
@@ -55,6 +59,7 @@ function Abar_chat(msg)
 		print('range- to turn on and off the ranged bar');
 		print('pvp- to turn on and off the enemy player bar(s)');
 		print('mob- to turn on and off the enemy mob bar(s)');
+		print('hideoh- to hide the off hand swing timer')
 	end
 end
 
@@ -171,7 +176,7 @@ mh_high_dmg = mh_high_dmg-math.fmod(mh_high_dmg,1)
 mh_low_dmg = mh_low_dmg-math.fmod(mh_low_dmg,1)
 
 mh_time,off_time=GetTime(),GetTime()
-if (oh == false) then
+if (oh == false or abar.hideoh) then
 	if prev_off_time == 0 then prev_off_time=off_time end
 	prev_mh_time = mh_time
 	total_mh_speed = mh_speed
